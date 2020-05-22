@@ -125,13 +125,13 @@ if(isset($_GET['type']) && $_GET['type'] == "remove"){
 		html = '<tr>';
 		
 		if(row == null){
-			html += '<td>'+row_num+'<div class="form-check"><input class="form-check-input" type="checkbox" value=""></div><input type="hidden" class="id" value="" /></td>';
+			html += '<td>'+row_num+'<div class="form-check"><input class="form-check-input" type="checkbox" value=""></div><input type="hidden" class="id form-control" value="" /></td>';
 			html += '<td><input type="text" class="form-control" /></td>';
 			html += '<td><input type="text" class="form-control" /></td>';
 			html += '<td><input type="text" class="form-control" /></td>';
 		}
 		else{
-			html += '<td>'+row_num+'<div class="form-check"><input class="form-check-input" type="checkbox" value="'+row.id+'"></div><input type="hidden" class="id" value="'+row.id+'" /></td>';
+			html += '<td>'+row_num+'<div class="form-check"><input class="form-check-input" type="checkbox" value="'+row.id+'"></div><input type="hidden" class="id form-control" value="'+row.id+'" /></td>';
 			html += '<td><input type="text" class="form-control" value="'+row.A+'" /></td>';
 			html += '<td><input type="text" class="form-control" value="'+row.B+'" /></td>';
 			html += '<td><input type="text" class="form-control" value="'+row.C+'" /></td>';
@@ -147,7 +147,7 @@ if(isset($_GET['type']) && $_GET['type'] == "remove"){
 		$(".tbody").find("tr").each(function(){
 			temp = [];
 			add = false;
-			$(this).find("input").each(function(){
+			$(this).find(".form-control").each(function(){
 				if($(this).val() != ""){
 					add = true;
 				}
@@ -167,6 +167,7 @@ if(isset($_GET['type']) && $_GET['type'] == "remove"){
             	init();
           	}
         })
+        init();
 	});
 
 	$("body").on("change", ".form-check-input", function(){
